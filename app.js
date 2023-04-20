@@ -1,5 +1,5 @@
 // Requires the inquirer functions, tasks and colours
-const { guardarDB } = require("./helpers/guardarArchivo");
+const { guardarDB, leerDB } = require("./helpers/guardarArchivo");
 const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
 require("colours");
@@ -7,6 +7,13 @@ require("colours");
 const main = async () => {
   let opt = "";
   const tareas = new Tareas();
+
+  const tareasDB = leerDB();
+
+  if (tareasDB) {
+  }
+
+  await pausa();
 
   do {
     // Prints the tasks menu
