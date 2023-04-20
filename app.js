@@ -1,7 +1,6 @@
 const { inquirerMenu, pausa } = require("./helpers/inquirer");
+const Tareas = require("./models/tareas");
 require("colours");
-
-console.clear();
 
 const main = async () => {
   console.log("hola mundo");
