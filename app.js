@@ -1,6 +1,6 @@
 // Requires the inquirer functions, tasks and colours
 const { guardarDB, leerDB } = require("./helpers/guardarArchivo");
-const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
+const { inquirerMenu, pausa, leerInput, listadoTareasBorrar, confirmar } = require("./helpers/inquirer");
 const Tareas = require("./models/tareas");
 require("colours");
 
@@ -34,6 +34,20 @@ const main = async () => {
       case "4":
         console.log("Aca van las tareas pendientes");
         tareas.listarPendientesCompletadas(false);
+        break;
+      case "6":
+        const id = await listadoTareasBorrar(tareas.listadoArr);
+        if (id !== "0") {
+          const ok = await confirmar("Seguro maquina?".red);
+
+          if (ok) {
+            tareas.borrarTarea(id);
+            console.log("Tarea borrada".green);
+          } else {
+            console.log("La tarea no se borró".yellow);
+          }
+        }
+        break;
     }
 
     guardarDB(tareas.listadoArr);
