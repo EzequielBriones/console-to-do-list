@@ -4,7 +4,7 @@ A console-built ToDo list. You can create new tasks, complete them and delete th
 
 ## Installation
 
-After installing all the dependencies (npm I on the root folder), run the
+After installing all the dependencies (npm install on the root folder), run the
 
 ```
 node app.js
