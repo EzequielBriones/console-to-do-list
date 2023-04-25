@@ -8,8 +8,10 @@ const main = async () => {
   let opt = "";
   const tareas = new Tareas();
 
+  // Calls the method that reads and encodes the json file so it can be shown to the user.
   const tareasDB = leerDB();
 
+  // If there are any tasks on the list, it shows them.
   if (tareasDB) {
     tareas.cargarTareasFromArr(tareasDB);
   }
@@ -27,25 +29,28 @@ const main = async () => {
       case "2": // List all tasks
         tareas.listadoCompleto();
         break;
+
       case "3": // Show completed tasks
         console.log("Aca van las tareas completadas");
         tareas.listarPendientesCompletadas();
         break;
+
       case "4": // Show pending tasks
         console.log("Aca van las tareas pendientes");
         tareas.listarPendientesCompletadas(false);
         break;
+
       case "5": // Complete tasks
         const ids = await mostrarListadoChecklist(tareas.listadoArr);
         tareas.toggleCompletadas(ids);
         console.log(ids);
-
         break;
+
       case "6": // Delete tasks
         const id = await listadoTareasBorrar(tareas.listadoArr);
+
         if (id !== "0") {
           const ok = await confirmar("Seguro maquina?".red);
-
           if (ok) {
             tareas.borrarTarea(id);
             console.log("Tarea borrada".green);
@@ -56,6 +61,7 @@ const main = async () => {
         break;
     }
 
+    // Gets all the tasks from the list and stores them in the localdb
     guardarDB(tareas.listadoArr);
 
     await pausa();

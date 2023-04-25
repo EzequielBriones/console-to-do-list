@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 require("colours");
 
+// This are the options the menu shows the user.
 const preguntas = [
   {
     type: "list",
@@ -39,17 +40,20 @@ const preguntas = [
   },
 ];
 
+// This function contains the menu
 const inquirerMenu = async () => {
   console.clear();
   console.log("=====================".green);
   console.log("Seleccione una opcion".white);
   console.log("=====================\n".green);
 
+  // This shows the questions to the user.
   const { opcion } = await inquirer.prompt(preguntas);
 
   return opcion;
 };
 
+// This shows the user the pause message.
 const pausa = async () => {
   const question = [
     {
@@ -63,6 +67,7 @@ const pausa = async () => {
   await inquirer.prompt(question);
 };
 
+// This reads the new task we just added.
 const leerInput = async (message) => {
   const question = [
     {
@@ -82,6 +87,7 @@ const leerInput = async (message) => {
   return desc;
 };
 
+// This gets the task we will delete based on ID
 const listadoTareasBorrar = async (tareas = []) => {
   const choices = tareas.map((tarea, i) => {
     const idx = `${i + 1}.`.green;
@@ -109,6 +115,7 @@ const listadoTareasBorrar = async (tareas = []) => {
   return id;
 };
 
+// This asks us if we are sure we want to delete the task.
 const confirmar = async (message) => {
   const question = [
     {
@@ -122,6 +129,7 @@ const confirmar = async (message) => {
   return ok;
 };
 
+// Shows the tasks list in a checkbox format, so we can complete them or not.
 const mostrarListadoChecklist = async (tareas = []) => {
   const choices = tareas.map((tarea, i) => {
     const idx = `${i + 1}.`.green;

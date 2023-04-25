@@ -15,11 +15,13 @@ const mostrarMenu = () => {
     console.log(`${"6.".green} Borrar tarea`);
     console.log(`${"0.".green} Salir\n`);
 
+    // This is the interface we show to interact with the user.
     const readline = require("readline").createInterface({
       input: process.stdin,
       output: process.stdout,
     });
 
+    // This is what's shown to the user in the console.
     readline.question("Seleccione una opción: ", (opt) => {
       readline.close();
       resolve(opt);
@@ -27,6 +29,7 @@ const mostrarMenu = () => {
   });
 };
 
+// This allows us to stop the process from ending unless we specify so.
 const pausa = () => {
   return new Promise((resolve) => {
     const readline = require("readline").createInterface({
