@@ -29,3 +29,6 @@ If you've completed a task, mark it down.
 See when you completed your tasks
 
 ![todolist 4](https://user-images.githubusercontent.com/78836036/234405078-d07aa920-1466-4408-934a-5327016c697b.png)
+
+
+Thanks to Fernando Herrera for the course and project.
